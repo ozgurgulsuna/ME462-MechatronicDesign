@@ -6,10 +6,10 @@ Servo ESC;  // create servo object to control a servo
 Servo steer;  // create servo object to control a servo
 Servo fservo, bservo, tservo;
 
-int fon, foff, bon, boff, ton, toff;
+int fon = 45, foff = 120, bon = 160, boff = 50, ton = 40, toff = 110;
 int var1, var2, var3;
 int dvel, dsteer_angle;
-int car_vel = 0;
+int car_vel = 1500;
 int steer_angle = 93;
 String buffer, tempo;
 
@@ -17,7 +17,7 @@ void setup() {
  Serial.begin(115200);
  Serial.setTimeout(1);
  ESC.attach(9);
- steer.attach(8);
+ steer.attach(10);
  fservo.attach(7);
  bservo.attach(6);
  tservo.attach(5);
@@ -30,19 +30,20 @@ void loop() {
   clearSerial();
   //Serial.println(tempo[0]);
   divide_strings(tempo);
-  if(tempo[0] == 'V'){
-    dvel = 2*var1;
-    dsteer_angle = var2;
+  if(tempo[0] == 'V'){  //adjust the car velocity
+    dvel = 1000*var1;
+    dsteer_angle = -1*var2;
     //Serial.println(vel);
     //Serial.println(steer_angle);
     linear_speed(dvel);
     steering_angle(dsteer_angle);
   }
-  else if(tempo[0] == 'D'){
+  else if(tempo[0] == 'D'){ // adjust the differential servos
     diff_servos(var1, var2, var3);
   }
-  if (!Serial.available()){
-    car_vel = 0;
+  //delay(50);
+  if (!Serial.available()){// if no commands received, return the initial velocity
+    car_vel = 1500;
     //steer_angle = 93;
     ESC.write(car_vel);
     //steer.write(steer_angle);
@@ -54,10 +55,10 @@ void loop() {
 
 void linear_speed(int dvel){
  car_vel = car_vel + dvel;
- if(car_vel > 180) car_vel =180;
- if(car_vel < 0) car_vel = 0;
+ if(car_vel > 1600) car_vel =1600;
+ if(car_vel < 1300) car_vel = 1300;
  ESC.write(car_vel);
- delay(40);
+ delay(20);
  
   
 }
@@ -65,8 +66,8 @@ void linear_speed(int dvel){
 
 void steering_angle(int dsteer_angle){
  steer_angle = steer_angle + dsteer_angle;
- if(steer_angle > 130) steer_angle =130;
- if(steer_angle < 55) steer_angle = 55;
+ if(steer_angle > 120) steer_angle =120;
+ if(steer_angle < 65) steer_angle = 65;
  steer.write(steer_angle);
  delay(40);
   
