@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/picotool.dir/main.cpp.o CMakeFiles/picotool.dir/picoboot_connection/picoboot_connection_cxx.cpp.o CMakeFiles/picotool.dir/picoboot_connection/picoboot_connection.c.o -o picotool  /usr/lib/libusb-1.0.so 
