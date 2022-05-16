@@ -1,0 +1,47 @@
+quadrature_encoder/CMakeFiles/pio_quadrature_encoder.dir/mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj: \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio/driver.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/common/pico_base/include/pico.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/common/pico_base/include/pico/types.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/common/pico_base/include/pico/assert.h \
+ /usr/lib/gcc/arm-none-eabi/11.2.0/include/stdbool.h \
+ /usr/arm-none-eabi/include/assert.h /usr/arm-none-eabi/include/_ansi.h \
+ /usr/arm-none-eabi/include/newlib.h \
+ /usr/arm-none-eabi/include/_newlib_version.h \
+ /usr/arm-none-eabi/include/sys/config.h \
+ /usr/arm-none-eabi/include/machine/ieeefp.h \
+ /usr/arm-none-eabi/include/sys/features.h \
+ /usr/lib/gcc/arm-none-eabi/11.2.0/include/stdint.h \
+ /usr/arm-none-eabi/include/stdint.h \
+ /usr/arm-none-eabi/include/machine/_default_types.h \
+ /usr/arm-none-eabi/include/sys/_intsup.h \
+ /usr/arm-none-eabi/include/sys/_stdint.h \
+ /usr/lib/gcc/arm-none-eabi/11.2.0/include/stddef.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/QuadratureEncoder/build/generated/pico_base/pico/version.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/common/pico_base/include/pico/config.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/QuadratureEncoder/build/generated/pico_base/pico/config_autogen.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/boards/include/boards/pico.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+ /usr/arm-none-eabi/include/sys/cdefs.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/common/pico_base/include/pico/types.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/common/pico_base/include/pico/error.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/uart.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/common/pico_binary_info/include/pico/binary_info.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/defs.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/structure.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/code.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h \
+ /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h
