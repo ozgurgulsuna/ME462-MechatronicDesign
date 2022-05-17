@@ -17,6 +17,7 @@ set(PICO_EXAMPLES_PATH ${PROJECT_SOURCE_DIR})
 pico_sdk_init()
 
 include(example_auto_set_url.cmake)
+# Add blink example
 
 
 add_compile_options(-Wall
@@ -26,4 +27,6 @@ add_compile_options(-Wall
         )
 
 # Hardware-specific examples in subdirectories:
-add_subdirectory(quadrature_encoder)
+
+add_subdirectory(pio)
+
