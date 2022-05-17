@@ -1,5 +1,5 @@
-/mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/QuadratureEncoder/build/elf2uf2/CMakeFiles/elf2uf2.dir
-/mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/QuadratureEncoder/build/elf2uf2/CMakeFiles/edit_cache.dir
-/mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/QuadratureEncoder/build/elf2uf2/CMakeFiles/rebuild_cache.dir
-/mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/QuadratureEncoder/build/elf2uf2/boot_uf2_headers/CMakeFiles/edit_cache.dir
-/mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/QuadratureEncoder/build/elf2uf2/boot_uf2_headers/CMakeFiles/rebuild_cache.dir
+/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/elf2uf2/CMakeFiles/rebuild_cache.dir
+/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/elf2uf2/CMakeFiles/edit_cache.dir
+/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/elf2uf2/CMakeFiles/elf2uf2.dir
+/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/elf2uf2/boot_uf2_headers/CMakeFiles/rebuild_cache.dir
+/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/elf2uf2/boot_uf2_headers/CMakeFiles/edit_cache.dir

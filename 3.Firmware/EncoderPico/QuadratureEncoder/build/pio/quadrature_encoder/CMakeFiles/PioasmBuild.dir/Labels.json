@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/pio/quadrature_encoder/CMakeFiles/PioasmBuild"
+		},
+		{
+			"file" : "/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/pio/quadrature_encoder/CMakeFiles/PioasmBuild.rule"
+		},
+		{
+			"file" : "/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/pio/quadrature_encoder/CMakeFiles/PioasmBuild-complete.rule"
+		},
+		{
+			"file" : "/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/pio/quadrature_encoder/pioasm/src/PioasmBuild-stamp/PioasmBuild-install.rule"
+		},
+		{
+			"file" : "/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/pio/quadrature_encoder/pioasm/src/PioasmBuild-stamp/PioasmBuild-mkdir.rule"
+		},
+		{
+			"file" : "/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/pio/quadrature_encoder/pioasm/src/PioasmBuild-stamp/PioasmBuild-download.rule"
+		},
+		{
+			"file" : "/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/pio/quadrature_encoder/pioasm/src/PioasmBuild-stamp/PioasmBuild-update.rule"
+		},
+		{
+			"file" : "/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/pio/quadrature_encoder/pioasm/src/PioasmBuild-stamp/PioasmBuild-patch.rule"
+		},
+		{
+			"file" : "/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/pio/quadrature_encoder/pioasm/src/PioasmBuild-stamp/PioasmBuild-configure.rule"
+		},
+		{
+			"file" : "/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/pio/quadrature_encoder/pioasm/src/PioasmBuild-stamp/PioasmBuild-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"PioasmBuild"
+		],
+		"name" : "PioasmBuild"
+	}
+}
