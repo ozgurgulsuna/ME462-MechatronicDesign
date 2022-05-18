@@ -1,0 +1,2 @@
+# Permission on the serial port 
+sudo chmod 666 ttyACM0
