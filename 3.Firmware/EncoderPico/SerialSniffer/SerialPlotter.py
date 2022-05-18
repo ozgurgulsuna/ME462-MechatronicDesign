@@ -56,9 +56,12 @@ time_zero = time.time()
 xdata = []
 ydata = []
 d()
+ser.readline()
 while 1 :
     
     raw=ser.readline().decode()
+    if (len(raw)!=33):
+        continue
     pos=int(raw[9:17])
     diff=int(raw[24:-2])
     print(pos, ",",diff)
