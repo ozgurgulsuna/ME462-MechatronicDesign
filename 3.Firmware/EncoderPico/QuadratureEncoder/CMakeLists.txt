@@ -27,6 +27,6 @@ add_compile_options(-Wall
         )
 
 # Hardware-specific examples in subdirectories:
-
-add_subdirectory(pio)
+add_subdirectory(quadrature_encoder)
+add_subdirectory(quadrature_encoder_multi)
 
