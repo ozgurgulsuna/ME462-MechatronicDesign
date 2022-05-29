@@ -1,4 +1,4 @@
-// Padded and checksummed version of: /home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/pico-sdk/src/rp2_common/boot_stage2/bs2_default.bin
+// Padded and checksummed version of: /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/QuadratureEncoder/build/pico-sdk/src/rp2_common/boot_stage2/bs2_default.bin
 
 .cpu cortex-m0plus
 .thumb

@@ -1,4 +1,4 @@
-# Install script for directory: /home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2_common/pico_bootsel_via_double_reset
+# Install script for directory: /mnt/F86A888E6A884AF8/2021-22/Okul/Dersler/ME462/3.Firmware/EncoderPico/Dependencies/pico-sdk/src/rp2_common/pico_bootsel_via_double_reset
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -30,5 +30,10 @@ endif()
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "TRUE")
+endif()
+
+# Set default install directory permissions.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "/usr/bin/arm-none-eabi-objdump")
 endif()
 
