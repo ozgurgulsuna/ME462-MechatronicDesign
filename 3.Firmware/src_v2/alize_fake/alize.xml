@@ -1,0 +1,28 @@
+	<robot name="alize">
+		<link name="base_link">
+		</link>
+		
+		<link name="pan">
+		</link>
+
+		<joint name="base_link_to_pan" type="revolute">		
+			<axis xyz="0 0 1"/>
+			<limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5"/>
+			<parent link="base_link"/>
+			<child link="pan"/>
+			<origin xyz="0.163 0 0.3" rpy="0.0 0.0 3.141592"/>
+
+		</joint>
+
+		<link name="camera_link">
+		</link>
+
+		<joint name="pan_to_camera_link" type="fixed">		
+			<axis xyz="0 0 0"/>
+			<parent link="pan"/>
+			<child link="camera_link"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+
+		</joint>		
+		
+	</robot>
