@@ -4,6 +4,7 @@
 #include <tf/transform_broadcaster.h>
 #include "geometry_msgs/Twist.h"
 #include <nav_msgs/Odometry.h>
+#include <sensor_msgs/JointState.h>
 
 double current_time, last_time;
 double x = 0.0;
@@ -20,6 +21,7 @@ double delta_y = 0.0;
 double delta_th = 0.0;
 
 double vel = 0.0;
+double pan_angle = 3.14;
 
 
 void chatterCallback(const geometry_msgs::Twist& msg)
@@ -44,8 +46,19 @@ void chatterCallback(const geometry_msgs::Twist& msg)
   
 }
 
+void pan_Callback(const geometry_msgs::Twist& msg)
+{
+  
+  pan_angle = float(msg.angular.z);
+
+
+}
+
 
 int main(int argc, char** argv) {
+    ros::init(argc, argv, "pan_angle");
+    ros::NodeHandle pan;
+    ros::Subscriber subb = pan.subscribe("pan_angle", 1000, pan_Callback);
 
     ros::init(argc, argv, "odometry_publisher");
 
@@ -67,11 +80,11 @@ int main(int argc, char** argv) {
     const double degree = M_PI/180;
 
     // robot state
-    double tilt = 0, tinc = degree, pan_angle=0, angle=0, height=0, hinc=0.005;
+    double tilt = 0, tinc = degree, angle=0, height=0, hinc=0.005;
 
     // message declarations
     geometry_msgs::TransformStamped odom_trans;
-    //sensor_msgs::JointState joint_state;
+    sensor_msgs::JointState joint_state;
     odom_trans.header.frame_id = "odom";
     odom_trans.child_frame_id = "base_link";
 
@@ -80,13 +93,13 @@ int main(int argc, char** argv) {
         ros::spinOnce();  
         current_time = ros::Time::now();
         //update joint_state
-        /*
+        
         joint_state.header.stamp = ros::Time::now();
         joint_state.name.resize(1);
         joint_state.position.resize(1);
         joint_state.name[0] ="base_link_to_pan";
         joint_state.position[0] = pan_angle;
-        */
+        
         
         //compute odometry in a typical way given the velocities of the robot
         dt = (current_time - last_time).toSec();
