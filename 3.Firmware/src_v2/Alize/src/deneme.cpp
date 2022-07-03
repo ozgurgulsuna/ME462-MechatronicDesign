@@ -28,24 +28,22 @@ double vel = 0.0;
 
 void chatterCallback(const geometry_msgs::Twist& msg)
 {
-    //dt = (current_time - last_time);
+
     vel = msg.linear.x;
-    //printf("%f", vel);
     vth = msg.angular.z;
     vx = vel * sin(th);
-    vy = vel * cos(th);
-    /*
-    delta_x = (vx * cos(th) - vy * sin(th)) * dt;
-    delta_y = (vx * sin(th) + vy * cos(th)) * dt;
-    delta_th = vth * dt;
-    x += delta_x;
-    //x += 10;
-    y += delta_y;
-    th += delta_th;
-    //ROS_INFO("I heard: [%f]", msg.linear.x);
-    //printf("%f", msg.linear.x);*/
-    
+    vy = vel * cos(th);  
   
+}
+
+
+void pan_Callback(const geometry_msgs::Twist& msg)
+{
+  
+  pan_angle = float(msg.angular.z);
+  ROS_INFO("I heard: [%f]", msg.angular.z);
+  
+
 }
 
 int main(int argc, char** argv){
@@ -53,6 +51,10 @@ int main(int argc, char** argv){
   ros::init(argc, argv, "deneme");
   ros::NodeHandle st;  
   ros::Publisher joint_pub = st.advertise<sensor_msgs::JointState>("joint_states", 1);
+  
+  ros::init(argc, argv, "pan_angle");
+  ros::NodeHandle pan;
+  ros::Subscriber subb = pan.subscribe("pan_angle", 1000, pan_Callback);
   
   
   ros::init(argc, argv, "odometry_publisher");
@@ -135,6 +137,9 @@ int main(int argc, char** argv){
 
     //publish the message
     odom_pub.publish(odom);
+    
+  	//send joint state
+    joint_pub.publish(joint_state);
 
     last_time = current_time;
     r.sleep();

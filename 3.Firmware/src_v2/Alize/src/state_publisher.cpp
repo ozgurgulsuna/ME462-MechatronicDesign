@@ -26,23 +26,12 @@ double pan_angle = 3.14;
 
 void chatterCallback(const geometry_msgs::Twist& msg)
 {
-    //dt = (current_time - last_time);
     vel = msg.linear.x;
-    //printf("%f", vel);
     vth = msg.angular.z;
     vx = vel * sin(th);
     vy = vel * cos(th);
-    /*
-    delta_x = (vx * cos(th) - vy * sin(th)) * dt;
-    delta_y = (vx * sin(th) + vy * cos(th)) * dt;
-    delta_th = vth * dt;
-    x += delta_x;
-    //x += 10;
-    y += delta_y;
-    th += delta_th;
-    //ROS_INFO("I heard: [%f]", msg.linear.x);
-    //printf("%f", msg.linear.x);*/
-    
+    ROS_INFO("I heard: [%f]", vel);
+
   
 }
 
@@ -50,6 +39,7 @@ void pan_Callback(const geometry_msgs::Twist& msg)
 {
   
   pan_angle = float(msg.angular.z);
+  //ROS_INFO("I heard: [%f]", msg.angular.z);
 
 
 }
@@ -141,7 +131,7 @@ int main(int argc, char** argv) {
         odom.twist.twist.linear.y = 0.0;
         odom.twist.twist.angular.z = 0.0;
 
-
+	//send joint state
         //joint_pub.publish(joint_state);
         
         

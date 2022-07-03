@@ -12,14 +12,14 @@ from multiprocessing import Process, Queue
 from concurrent.futures import ThreadPoolExecutor
 
 
-x = 180
+x = 50
 
 def write_read(x):
     
     arduino.write(x.encode())
     time.sleep(1/1000)
     data = arduino.readline().decode()
-    #print(data)
+    print(data)
     return data
     
     
@@ -33,14 +33,18 @@ def pan_angle(q):
     rate = rospy.Rate(10) # 10hz
     while 1:
         move_cmd = Twist()
-        x = int(q.get())
-        #print(type(x))
-        #print(x)
-        move_cmd.angular.z = float((x-107+180)*3.14/180)
-        
-        
-        pub.publish(move_cmd)
-        rate.sleep()
+        try:
+            x = int(q.get())
+
+            #print(type(x))
+            #print(x)
+            move_cmd.angular.z = float((x-50+180)*3.14/180)
+            
+            
+            pub.publish(move_cmd)
+            rate.sleep()
+        except:
+            pass
         
 
 
