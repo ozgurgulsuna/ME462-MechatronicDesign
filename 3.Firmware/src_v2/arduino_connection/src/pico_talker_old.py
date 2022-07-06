@@ -9,7 +9,7 @@ import os
 from geometry_msgs.msg import Twist
 import serial
 
-TrackWidth=.2
+LenghtBetweenTwoWheels=.2
 dist_per_count = 0.0075
 
 ser = serial.Serial(
@@ -47,31 +47,11 @@ while 1:
         pos2=int(raw[44:52])
         diff2=int(raw[60:66])
         #print(diff1)
-        vel_right = diff1*dist_per_count*10.0
-        vel_left = diff2*dist_per_count*10.0
-        
-        if vel_left == 0.0 or vel_right == 0.0:
-            pub_encoder(0.0,0.0)
-            #print("0.0, 0.0")
-        else:
-            if vel_left>vel_right:
-                    L2=vel_right*TrackWidth/(vel_left-vel_right)
-                    w=vel_right/L2
-            else:
-	            L2=vel_left*TrackWidth/(vel_right-vel_left)
-                    w=vel_left/L2
-            speed=(vel_right+vel_left)/2
-            #print(speed, w)
-            #speed= (vel_left + vel_right)/ 2.0
-	        #v_th=(vel_right - vel_left)/ LenghtBetweenTwoWheels
-            pub_encoder(speed, w)
+        vel_right = diff1*dist_per_count*10
+        vel_left = diff2*dist_per_count*10
+        speed= (vel_left + vel_right)/ 2.0
+        v_th=(vel_right - vel_left)/ LenghtBetweenTwoWheels
+        pub_encoder(speed, v_th)
         
     except:
         pass
-
-
-    
-    
-    
-
-

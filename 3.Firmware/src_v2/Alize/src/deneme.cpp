@@ -4,6 +4,8 @@
 #include <ros/ros.h>
 #include <sensor_msgs/JointState.h>
 #include "geometry_msgs/Twist.h"
+#include <iostream>
+using namespace std;
 
 
 double current_time, last_time;
@@ -16,7 +18,7 @@ double vy = 0.0;
 double vth = 0.0;
 
 
-int pan_angle = 0.0;
+double pan_angle = 10.0;
 
 double dt = 0.0;
 double delta_x = 0.0;
@@ -31,8 +33,8 @@ void chatterCallback(const geometry_msgs::Twist& msg)
 
     vel = msg.linear.x;
     vth = msg.angular.z;
-    vx = vel * sin(th);
-    vy = vel * cos(th);  
+    vx = vel * cos(th);
+    vy = vel * sin(th);  
   
 }
 
@@ -41,7 +43,8 @@ void pan_Callback(const geometry_msgs::Twist& msg)
 {
   
   pan_angle = float(msg.angular.z);
-  ROS_INFO("I heard: [%f]", msg.angular.z);
+  //ROS_INFO("I heard: [%f]", msg.angular.z);
+  //cout << "Hello World!";
   
 
 }
@@ -49,21 +52,20 @@ void pan_Callback(const geometry_msgs::Twist& msg)
 int main(int argc, char** argv){
 
   ros::init(argc, argv, "deneme");
+
   ros::NodeHandle st;  
   ros::Publisher joint_pub = st.advertise<sensor_msgs::JointState>("joint_states", 1);
   
-  ros::init(argc, argv, "pan_angle");
+
   ros::NodeHandle pan;
   ros::Subscriber subb = pan.subscribe("pan_angle", 1000, pan_Callback);
-  
-  
-  ros::init(argc, argv, "odometry_publisher");
+
 
   ros::NodeHandle n;
   ros::Publisher odom_pub = n.advertise<nav_msgs::Odometry>("odom", 50);
   tf::TransformBroadcaster odom_broadcaster;
   
-  ros::init(argc, argv, "encoder");
+
   ros::NodeHandle en;
   ros::Subscriber sub = en.subscribe("encoder", 1000, chatterCallback);
 
@@ -90,8 +92,8 @@ int main(int argc, char** argv){
     
     //compute odometry in a typical way given the velocities of the robot
     dt = (current_time - last_time).toSec();
-    delta_x = (vx * cos(th) - vy * sin(th)) * dt;
-    delta_y = (vx * sin(th) + vy * cos(th)) * dt;
+    delta_x = (vx) * dt;
+    delta_y = (vy) * dt;
     delta_th = vth * dt;
 
     x += delta_x;
@@ -138,8 +140,6 @@ int main(int argc, char** argv){
     //publish the message
     odom_pub.publish(odom);
     
-  	//send joint state
-    joint_pub.publish(joint_state);
 
     last_time = current_time;
     r.sleep();

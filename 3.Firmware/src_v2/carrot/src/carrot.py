@@ -106,11 +106,11 @@ while True:
             
         #print(max_area)
         
-        if (area_threshold - max_area)>0:
+        if (area_threshold - max_area)>200:
             linear_vel_calc =  100 + (-area_threshold**-0.5 + max_area**-0.5) * 5000
             if(linear_vel_calc > 150):
                 linear_vel_calc = 150
-        elif (area_threshold - max_area)<0:
+        elif (area_threshold - max_area)<-200:
             linear_vel_calc =  -100 + (-area_threshold**-0.5 + max_area**-0.5) * 8000
             if(linear_vel_calc < -150):
                 linear_vel_calc = -150

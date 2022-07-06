@@ -1,0 +1,4 @@
+<launch>
+        <node name="arduino_talker" pkg="arduino_connection" type="arduino_talker.py" />
+        
+</launch>

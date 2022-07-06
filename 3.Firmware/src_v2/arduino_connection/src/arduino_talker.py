@@ -12,21 +12,25 @@ from multiprocessing import Process, Queue
 from concurrent.futures import ThreadPoolExecutor
 
 
-x = 50
+x = 0
 
 def write_read(x):
     
     arduino.write(x.encode())
-    time.sleep(1/1000)
+    #time.sleep(1/1000)
     data = arduino.readline().decode()
-    print(data)
+    #print(data)
     return data
     
+def write_read_2(x):
     
+    arduino.write(x.encode())
+
     
 def pan_angle(q):
     #global x
     #type(x)
+    x = 0
     
     pub = rospy.Publisher('pan_angle', Twist, queue_size=10)
     rospy.init_node('pan_angle', anonymous=True)
@@ -38,31 +42,27 @@ def pan_angle(q):
 
             #print(type(x))
             #print(x)
-            move_cmd.angular.z = float((x-50+180)*3.14/180)
-            
-            
-            pub.publish(move_cmd)
-            rate.sleep()
+            move_cmd.angular.z = float((x-180)*3.14/180)
+
         except:
             pass
+        pub.publish(move_cmd)
+        rate.sleep()
         
 
 
 
 def callback_car_vel(msg):
     message = "V " + str(msg.linear.x) + " " + str(msg.angular.z)
-    print(message)
-    write_read(message)
+    #print(message)
+    write_read_2(message)
+    #time.sleep(0.01)
 
 
     
 def car_vel():
 
-    # In ROS, nodes are uniquely named. If two nodes with the same
-    # name are launched, the previous one is kicked off. The
-    # anonymous=True flag means that rospy will choose a unique
-    # name for our 'listener' node so that multiple listeners can
-    # run simultaneously.
+
     rospy.init_node('car_vel', anonymous=True)
 
     rospy.Subscriber("cmd_vel", Twist, callback_car_vel)
@@ -78,11 +78,6 @@ def callback_diff(msg):
     
 def differentials():
 
-    # In ROS, nodes are uniquely named. If two nodes with the same
-    # name are launched, the previous one is kicked off. The
-    # anonymous=True flag means that rospy will choose a unique
-    # name for our 'listener' node so that multiple listeners can
-    # run simultaneously.
     rospy.init_node('differentials', anonymous=True)
 
     rospy.Subscriber("diffs", String, callback_diff)
@@ -99,6 +94,7 @@ def callback_pan(msg, q):
         q.get_nowait()
     except:
         pass
+    print(x)
     q.put(x)
 
 def pan(q):
