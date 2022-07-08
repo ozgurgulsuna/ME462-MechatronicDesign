@@ -4,8 +4,6 @@
 #include <ros/ros.h>
 #include <sensor_msgs/JointState.h>
 #include "geometry_msgs/Twist.h"
-#include <iostream>
-using namespace std;
 
 
 double current_time, last_time;
@@ -134,7 +132,7 @@ int main(int argc, char** argv){
     //set the velocity
     odom.child_frame_id = "base_link";
     odom.twist.twist.linear.x = vx;
-    odom.twist.twist.linear.y = vy;
+    odom.twist.twist.linear.y = 0;
     odom.twist.twist.angular.z = vth;
 
     //publish the message

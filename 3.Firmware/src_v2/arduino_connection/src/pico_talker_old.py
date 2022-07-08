@@ -25,7 +25,7 @@ def pub_encoder(speed, rotation):
     # Create a publisher which can "talk" to Turtlesim and tell it to move
     pub = rospy.Publisher('/encoder', Twist, queue_size=10)
     rospy.init_node('pub_encoder', anonymous=True)
-    rate = rospy.Rate(100)
+    rate = rospy.Rate(10)
      
     # Create a Twist message and add linear x and angular z values
     move_cmd = Twist()

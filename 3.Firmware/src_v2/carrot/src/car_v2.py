@@ -26,32 +26,16 @@ def nothing(x):
 
 
 
-def pub_commands(q, lin, ang):
-    min_dist = 0.2
+def pub_commands(lin, ang):
     # Create a publisher which can "talk" to Turtlesim and tell it to move
     pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
     rospy.init_node('pub_commands', anonymous=True)
     rate = rospy.Rate(10)
-    scan = 5
-    try:
-        print("get")
-        sc = q.get()
-        print(sc)
-        """if sc > min_dist:
-            # Create a Twist message and add linear x and angular z values
-            move_cmd = Twist()
-            move_cmd.linear.x = lin
-            move_cmd.angular.z = ang
-        else:
-            move_cmd = Twist()
-            move_cmd.linear.x = 0.0
-            move_cmd.angular.z = 0.0"""
-    except:
-        print("in the pub")
-        move_cmd = Twist()
-        move_cmd.linear.x = 0.0
-        move_cmd.angular.z = 0.0
-        
+     
+    # Create a Twist message and add linear x and angular z values
+    move_cmd = Twist()
+    move_cmd.linear.x = lin
+    move_cmd.angular.z = ang
 
     
     pub.publish(move_cmd)
@@ -101,15 +85,11 @@ cv2.createTrackbar("U - V", "Trackbars", 255, 255, nothing)
 
 last_linear_vel = 0
 linear_vel = 0
-print("aa")
-q = Queue()
-th_measure = Process(target = measure, args = (q,))
-th_measure.start()
-print("bb")
-pub_commands(q, 0.0, 0.0)
-print("cc")
 
-while True:
+
+
+def get_vel():
+    global last_linear_vel, linear_vel
     #print("bb")
     cap.grab() 
     cap.grab() 
@@ -182,7 +162,6 @@ while True:
     angular_vel = -1*(mean_x - mid_x_axis)*30/320.0 * .25 * 50
     #print(linear_vel, angular_vel)
     #print("gg")
-    pub_commands(q, linear_vel, angular_vel)
     #print("hh")
     #print(max_area)
     linear_vel = 0.05 * linear_vel_calc + 0.95 * last_linear_vel
@@ -213,8 +192,31 @@ while True:
 
 
     key = cv2.waitKey(1)
-    if key == 27:
-        break
+
+        
+    return linear_vel, angular_vel  
+
+
+
+if __name__ == '__main__':
+    global scan
+    q = Queue()
+    
+    try:
+        lin, ang = get_vel()
+        th_measure = Process(target = measure, args = (q,))
+        th_measure.start()
+        if scan < 0.2:
+            pub_commands(lin, ang)
+        else:
+            pub_commands(0, 0)
+        
+
+
+    except rospy.ROSInterruptException:
+        print("asd")
+        pass
+
 
 cap.release()
 cv2.destroyAllWindows()
