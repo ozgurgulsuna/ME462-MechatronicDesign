@@ -8,8 +8,8 @@ Servo fservo, bservo, tservo;
 Servo pan;
 
 int fon = 45, foff = 120, bon = 160, boff = 50, ton = 40, toff = 110, pan_angle = 50;
-int var1, var2, var3;
-int dvel, dsteer_angle;
+float var1, var2, var3;
+float dvel, dsteer_angle;
 int car_vel = 1500;
 int steer_angle = 93;
 String buffer, tempo;
@@ -25,7 +25,7 @@ void setup() {
  tservo.attach(5);
  pan.write(pan_angle);
  ESC.write(car_vel);
- steer.write(steer_angle);
+ //steer.write(steer_angle);
  //Serial.print("starting....");
  delay(50);
 
@@ -37,11 +37,13 @@ void loop() {
     if((millis() - time_beg) > 500) ESC.write(1500);
     }
   tempo = Serial.readString();
+  //Serial.println(tempo);
   clearSerial();
   divide_strings(tempo);
   if(tempo[0] == 'V'){  //adjust the car velocity
     dvel = var1;
-    dsteer_angle = -1*var2/20;
+    if (var2 == 0) ;
+    else dsteer_angle = -1*var2/10.91 + 92.25;
     linear_speed(dvel);
     steering_angle(dsteer_angle);
   }
@@ -53,8 +55,8 @@ void loop() {
     if(pan_angle>100) pan_angle = 100;
     else if(pan_angle<0) pan_angle = 0;
     pan.write(pan_angle);
-    Serial.println(pan_angle);
-    delay(15);
+    //Serial.println(pan_angle);
+    //delay(15);
   }
 
   
@@ -74,7 +76,7 @@ void linear_speed(int dvel){
 
 
 void steering_angle(int dsteer_angle){
- steer_angle = steer_angle + dsteer_angle;
+ steer_angle = dsteer_angle;
  //Serial.println(steer_angle);
  if(steer_angle > 120) steer_angle =120;
  if(steer_angle < 65) steer_angle = 65;
