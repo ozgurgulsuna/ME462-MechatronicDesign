@@ -2,6 +2,17 @@
 		<link name="base_link">
 		</link>
 		
+		<link name="velodyne">
+		</link>
+
+		<joint name="base_link_to_lidar" type="fixed">		
+			<axis xyz="0 0 0"/>
+			<parent link="base_link"/>
+			<child link="velodyne"/>
+			<origin xyz="0.0 0.15 0.30" rpy="0.0 0.0  0.0"/>
+			
+		</joint>
+			
 		<link name="pan">
 		</link>
 
@@ -23,6 +34,8 @@
 			<child link="camera_link"/>
 			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 
-		</joint>		
+		</joint>
+		
+		
 		
 	</robot>
