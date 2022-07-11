@@ -53,7 +53,7 @@ def pan_angle(q):
 
 
 def callback_car_vel(msg):
-    message = "V " + str(msg.linear.x) + " " + str(msg.angular.z)
+    message = "V " + str(msg.linear.x+1) + " " + str(msg.angular.z+1)
     #print(message)
     write_read_2(message)
     #time.sleep(0.01)
@@ -69,12 +69,32 @@ def car_vel():
 
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()
+    
+    
+    
+def callback_carrot(msg):
+    message = "C " + str(msg.linear.x+1) + " " + str(msg.angular.z+1)
+    print(message)
+    write_read_2(message)
+    #time.sleep(0.01)
+
+
+    
+def carrot():
+
+
+    rospy.init_node('carrot', anonymous=True)
+
+    rospy.Subscriber("aruco", Twist, callback_carrot)
+
+    # spin() simply keeps python from exiting until this node is stopped
+    rospy.spin()
 
 
 def callback_diff(msg):
     message = "D " + msg.data
     #print(message)
-    write_read(message)
+    write_read_2(message)
     
 def differentials():
 
@@ -117,8 +137,10 @@ if __name__ == '__main__':
 
         #car_vel()
         th_car_vel = Process(target = car_vel)
+        th_carrot = Process(target = carrot)
         th_diff = Process(target = differentials)
         th_car_vel.start()
+        th_carrot.start()
         th_diff.start()
         q = Queue()
         th_pan = Process(target = pan, args = (q,))

@@ -31,8 +31,8 @@ void chatterCallback(const geometry_msgs::Twist& msg)
 
     vel = msg.linear.x;
     vth = msg.angular.z;
-    vx = vel * cos(th);
-    vy = vel * sin(th);  
+    vx = vel;
+    vy = 0;  
   
 }
 
@@ -90,8 +90,8 @@ int main(int argc, char** argv){
     
     //compute odometry in a typical way given the velocities of the robot
     dt = (current_time - last_time).toSec();
-    delta_x = (vx) * dt;
-    delta_y = (vy) * dt;
+    delta_x = vx * dt * cos(th);
+    delta_y = vx*dt*sin(th);
     delta_th = vth * dt;
 
     x += delta_x;
@@ -132,7 +132,7 @@ int main(int argc, char** argv){
     //set the velocity
     odom.child_frame_id = "base_link";
     odom.twist.twist.linear.x = vx;
-    odom.twist.twist.linear.y = 0;
+    odom.twist.twist.linear.y = vy;
     odom.twist.twist.angular.z = vth;
 
     //publish the message

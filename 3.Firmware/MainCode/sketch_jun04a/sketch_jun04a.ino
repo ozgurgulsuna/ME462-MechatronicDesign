@@ -40,13 +40,22 @@ void loop() {
   clearSerial();
   divide_strings(tempo);
   if(tempo[0] == 'V'){  //adjust the car velocity
-    dvel = var1;
+    if(var1 == 0) ;
+    else dvel = var1;
     dsteer_angle = -1*var2/20;
     linear_speed(dvel);
     steering_angle(dsteer_angle);
   }
   else if(tempo[0] == 'D'){ // adjust the differential servos
     diff_servos(var1, var2, var3);
+  }
+  else if(tempo[0] == 'C'){ // adjust the differential servos
+    if(var1 == 0) ;
+    else dvel = var1;
+    if (var2 == 0) ;
+    else dsteer_angle = -1*var2/10.91 + 92.25;
+    linear_speed(dvel);
+    steering_angle_2(dsteer_angle);
   }
   else if(tempo[0] == 'P'){ // adjust the differential servos
     pan_angle = pan_angle + var1;
@@ -75,6 +84,15 @@ void linear_speed(int dvel){
 
 void steering_angle(int dsteer_angle){
  steer_angle = steer_angle + dsteer_angle;
+ //Serial.println(steer_angle);
+ if(steer_angle > 120) steer_angle =120;
+ if(steer_angle < 65) steer_angle = 65;
+ steer.write(steer_angle);
+
+}
+
+void steering_angle_2(int dsteer_angle){
+ steer_angle = dsteer_angle;
  //Serial.println(steer_angle);
  if(steer_angle > 120) steer_angle =120;
  if(steer_angle < 65) steer_angle = 65;

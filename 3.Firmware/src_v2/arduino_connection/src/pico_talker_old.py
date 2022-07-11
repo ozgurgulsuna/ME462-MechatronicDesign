@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # Importing Libraries
 
-import cv2
 import numpy as np
 import time
 import rospy
@@ -46,7 +45,7 @@ while 1:
         diff1=int(raw[26:32])
         pos2=int(raw[44:52])
         diff2=int(raw[60:66])
-        #print(diff1)
+        #print(diff2)
         vel_right = diff1*dist_per_count*10
         vel_left = diff2*dist_per_count*10
         speed= (vel_left + vel_right)/ 2.0

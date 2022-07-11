@@ -19,6 +19,7 @@ def talker():
     while not rospy.is_shutdown():
         
         msg = str(x) + " " + str(y) + " " + str(z)
+        print(msg)
         pub.publish(msg)
         rate.sleep()
 

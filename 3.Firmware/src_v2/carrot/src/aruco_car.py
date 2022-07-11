@@ -18,7 +18,7 @@ cap = cv2.VideoCapture(2)
 
 def pub_commands(lin, ang):
     # Create a publisher which can "talk" to Turtlesim and tell it to move
-    pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
+    pub = rospy.Publisher('/aruco', Twist, queue_size=10)
     rospy.init_node('pub_commands', anonymous=True)
     rate = rospy.Rate(10)
      
@@ -33,7 +33,7 @@ def pub_commands(lin, ang):
 
 
 
-def findAruco(img, marker_size=6, total_markers=250, draw=True):
+def findAruco(img, marker_size=6, total_markers=100, draw=True):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     key = getattr(aruco,f'DICT_{marker_size}X{marker_size}_{total_markers}')
     arucoDict = aruco.Dictionary_get(key)
@@ -66,16 +66,16 @@ while True:
         dist2 = ((x3-x2)**2+(y3-y2)**2)**0.5
         max_area = dist2*dist1
         
-        if (area_threshold - max_area)>50:
-            linear_vel_calc =  100 + (-area_threshold**-0.5 + max_area**-0.5) * 3500
+        if (area_threshold - max_area)>10:
+            linear_vel_calc =  100 + (-area_threshold**-0.5 + max_area**-0.5) * 4500
             angular_vel = -1*(mean_x - mid_x_axis)*30/320.0 * .25 * 50
-            if(linear_vel_calc > 150):
-                linear_vel_calc = 150
-        elif (area_threshold - max_area)<-50:
+            if(linear_vel_calc > 200):
+                linear_vel_calc = 200
+        elif (area_threshold - max_area)<-10:
             angular_vel = 1*(mean_x - mid_x_axis)*30/320.0 * .25 * 50
-            linear_vel_calc =  -100 + (-area_threshold**-0.5 + max_area**-0.5) * 5500
-            if(linear_vel_calc < -150):
-                linear_vel_calc = -150
+            linear_vel_calc =  -100 + (-area_threshold**-0.5 + max_area**-0.5) * 6500
+            if(linear_vel_calc < -200):
+                linear_vel_calc = -200
         else:
             linear_vel_calc = 0
             
@@ -91,7 +91,7 @@ while True:
 
 
 
-    #cv2.imshow("frame", frame)
+    cv2.imshow("frame", frame)
     key = cv2.waitKey(1)
     if key == 27:
         break

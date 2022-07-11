@@ -93,7 +93,7 @@ def on_press(key):
     
 def on_release(key):
     pub_commands(0, 0)
-    print("biraaaak")
+    #print("biraaaak")
     
 
 

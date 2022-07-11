@@ -12,7 +12,7 @@ import cv2.aruco as aruco
 
 area_threshold, mid_x_axis = 90000, 320
 
-cv2.namedWindow("Bos pencere")
+cv2.namedWindow("Bos pencere")	
 cap = cv2.VideoCapture(2)
 
 
@@ -33,7 +33,7 @@ def pub_commands(lin, ang):
 
 
 
-def findAruco(img, marker_size=6, total_markers=250, draw=True):
+def findAruco(img, marker_size=5, total_markers=100, draw=True):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     key = getattr(aruco,f'DICT_{marker_size}X{marker_size}_{total_markers}')
     arucoDict = aruco.Dictionary_get(key)
@@ -67,7 +67,7 @@ while True:
         max_area = dist2*dist1
         
         if (area_threshold - max_area)>50:
-            linear_vel_calc =  50 + (-area_threshold**-0.5 + max_area**-0.5) * 3500
+            linear_vel_calc =  50 + (-area_threshold**-0.5 + max_area**-0.5) * 4500
             #linear_vel_calc = 0
             angular_vel = -1*(mean_x - mid_x_axis)*30/320.0 * .25 * 50
             if(linear_vel_calc > 100):
