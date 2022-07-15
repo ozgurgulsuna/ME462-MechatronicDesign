@@ -18,7 +18,7 @@ cap = cv2.VideoCapture(2)
 
 def pub_commands(lin, ang):
     # Create a publisher which can "talk" to Turtlesim and tell it to move
-    pub = rospy.Publisher('/aruco', Twist, queue_size=10)
+    pub = rospy.Publisher('/aruco_2', Twist, queue_size=10)
     rospy.init_node('pub_commands', anonymous=True)
     rate = rospy.Rate(10)
      
@@ -55,36 +55,38 @@ while True:
     _, frame = cap.read()
     
     bbox, ids = findAruco(frame)
-
-    time.sleep(0.01)
-    if ids == None:
-        pub_commands(0,0)
-    else:
-        mean_x = (bbox[0][0][0][0] + bbox[0][0][1][0] + bbox[0][0][2][0] + bbox[0][0][3][0])/4
-        x1, y1, x2, y2, x3, y3 = bbox[0][0][0][0] , bbox[0][0][0][1], bbox[0][0][1][0], bbox[0][0][1][1], bbox[0][0][2][0], bbox[0][0][2][1]
-        dist1 = ((x2-x1)**2+(y2-y1)**2)**0.5
-        dist2 = ((x3-x2)**2+(y3-y2)**2)**0.5
-        max_area = dist2*dist1
-        
-        if (area_threshold - max_area)>10:
-            linear_vel_calc =  100 + (-area_threshold**-0.5 + max_area**-0.5) * 4500
-            angular_vel = -1*(mean_x - mid_x_axis)*30/320.0 * .25 * 50
-            if(linear_vel_calc > 200):
-                linear_vel_calc = 200
-        elif (area_threshold - max_area)<-10:
-            angular_vel = 1*(mean_x - mid_x_axis)*30/320.0 * .25 * 50
-            linear_vel_calc =  -100 + (-area_threshold**-0.5 + max_area**-0.5) * 6500
-            if(linear_vel_calc < -200):
-                linear_vel_calc = -200
+    try:
+        time.sleep(0.01)
+        if ids == None:
+            pub_commands(0,0)
         else:
-            linear_vel_calc = 0
+            mean_x = (bbox[0][0][0][0] + bbox[0][0][1][0] + bbox[0][0][2][0] + bbox[0][0][3][0])/4
+            x1, y1, x2, y2, x3, y3 = bbox[0][0][0][0] , bbox[0][0][0][1], bbox[0][0][1][0], bbox[0][0][1][1], bbox[0][0][2][0], bbox[0][0][2][1]
+            dist1 = ((x2-x1)**2+(y2-y1)**2)**0.5
+            dist2 = ((x3-x2)**2+(y3-y2)**2)**0.5
+            max_area = dist2*dist1
             
-        
-        #print(linear_vel, angular_vel)
-        print(max_area)
-        linear_vel = 0.05 * linear_vel_calc + 0.95 * last_linear_vel
-        pub_commands(linear_vel, angular_vel)
-        last_linear_vel = linear_vel_calc
+            if (area_threshold - max_area)>10:
+                linear_vel_calc =  100 + (-area_threshold**-0.5 + max_area**-0.5) * 4500
+                angular_vel = -1*(mean_x - mid_x_axis)*30/320.0 * .25 * 50
+                if(linear_vel_calc > 200):
+                    linear_vel_calc = 200
+            elif (area_threshold - max_area)<-10:
+                angular_vel = 1*(mean_x - mid_x_axis)*30/320.0 * .25 * 50
+                linear_vel_calc =  -100 + (-area_threshold**-0.5 + max_area**-0.5) * 6500
+                if(linear_vel_calc < -200):
+                    linear_vel_calc = -200
+            else:
+                linear_vel_calc = 0
+                
+            
+            print(linear_vel, angular_vel)
+            #print(max_area)
+            linear_vel = 0.05 * linear_vel_calc + 0.95 * last_linear_vel
+            pub_commands(linear_vel, angular_vel)
+            last_linear_vel = linear_vel_calc
+    except:
+        pass
         
         
 

@@ -10,6 +10,7 @@ from geometry_msgs.msg import Twist
 import multiprocessing
 from multiprocessing import Process, Queue
 from concurrent.futures import ThreadPoolExecutor
+from ackermann_msgs.msg import AckermannDriveStamped
 
 
 x = 0
@@ -19,7 +20,7 @@ def write_read(x):
     arduino.write(x.encode())
     #time.sleep(1/1000)
     data = arduino.readline().decode()
-    #print(data)
+    print(data)
     return data
     
 def write_read_2(x):
@@ -50,8 +51,6 @@ def pan_angle(q):
         rate.sleep()
         
 
-
-
 def callback_car_vel(msg):
     message = "V " + str(msg.linear.x+1) + " " + str(msg.angular.z+1)
     #print(message)
@@ -74,7 +73,7 @@ def car_vel():
     
 def callback_carrot(msg):
     message = "C " + str(msg.linear.x+1) + " " + str(msg.angular.z+1)
-    print(message)
+    #print(message)
     write_read_2(message)
     #time.sleep(0.01)
 

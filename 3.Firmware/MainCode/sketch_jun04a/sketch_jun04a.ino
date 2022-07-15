@@ -13,7 +13,7 @@ Servo steer;  // create servo object to control a servo
 Servo fservo, bservo, tservo;
 Servo pan;
 
-int fon = 45, foff = 120, bon = 160, boff = 50, ton = 30, toff = 120, pan_angle = 50;
+int fon = 45, foff = 120, bon = 170, boff = 50, ton = 40, toff = 140, pan_angle = 50;
 int var1, var2, var3;
 int dvel, dsteer_angle;
 int car_vel = 1500;

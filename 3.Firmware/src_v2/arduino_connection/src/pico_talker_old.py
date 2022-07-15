@@ -38,19 +38,28 @@ def pub_encoder(speed, rotation):
 
 
 while 1:
-    
-    try:
+        #print("b") 
+        #try:
         raw=ser.readline().decode()
-        pos1=int(raw[10:18])
-        diff1=int(raw[26:32])
-        pos2=int(raw[44:52])
-        diff2=int(raw[60:66])
-        #print(diff2)
-        vel_right = diff1*dist_per_count*10
-        vel_left = diff2*dist_per_count*10
+        posfr=int(raw[4:12])
+        sfr=int(raw[17:23])
+        posfl=int(raw[28:36])
+        sfl=int(raw[41:47])
+        posmr=int(raw[52:60])
+        smr=int(raw[65:71])
+        posml=int(raw[76:84])
+        sml=int(raw[89:95])
+        posrr=int(raw[100:108])
+        srr=int(raw[113:119])
+        posrl=int(raw[123:132])
+        srl=int(raw[137:143])
+        #print("a")
+        #print(posml)
+        vel_right = sfr*dist_per_count*4
+        vel_left = sfl*dist_per_count*4
         speed= (vel_left + vel_right)/ 2.0
         v_th=(vel_right - vel_left)/ LenghtBetweenTwoWheels
         pub_encoder(speed, v_th)
         
-    except:
-        pass
+        #except:
+        #    pass
