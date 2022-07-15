@@ -1,3 +1,0 @@
-/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/pioasm/CMakeFiles/rebuild_cache.dir
-/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/pioasm/CMakeFiles/edit_cache.dir
-/home/jetson/Desktop/ME462-MechatronicDesign/3.Firmware/EncoderPico/QuadratureEncoder/build/pioasm/CMakeFiles/pioasm.dir

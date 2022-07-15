@@ -1,2 +1,0 @@
-add_subdirectory(popcorn)
-add_subdirectory(usb_sound_card)

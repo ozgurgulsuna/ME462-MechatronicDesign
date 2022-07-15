@@ -1,6 +1,0 @@
-if (NOT PICO_NO_HARDWARE)
-    add_subdirectory(bme280_spi)
-    add_subdirectory(mpu9250_spi)
-    add_subdirectory(spi_dma)
-    add_subdirectory(spi_flash)
-endif ()
