@@ -30,3 +30,18 @@ There are three branches on this repository.
 https://drive.google.com/file/d/1V86x9LThA63_ukUhYCk8bV1TmlNkJcUu/view?usp=sharing
 
 Please note that not all the parrts are included in this assembly. Although the models are the same as the parts on the car, their locations may differ. For this reason, you may double-check while referring to the CAD models.
+
+## Photographs
+
+<p align="center">
+   
+<p align="center">
+    <img width="46.26%" src="/5.Photos/sxs1.jpg">
+    &nbsp&nbsp 
+    <img width="33.68%" src="/5.Photos/sxs4.jpg">
+</p>
+
+<p align="center">
+    <img width="81.8%" src="/5.Photos/sxs3.jpg">
+</p>
+
